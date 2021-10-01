@@ -29,6 +29,14 @@ class MyForm extends React.Component {
   myChangeHandler = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
+    let err = '';
+    if (nam === "age") {
+      if (val !="" && !Number(val)) {
+        err = <strong>Your age must be a number</strong>;
+      }
+    }
+    this.setState({errormessage: err});
+    this.setState({[nam]: val});
     if (!Number(val)) {
         alert("Your phone number must be a number");
       }
